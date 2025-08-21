@@ -1,111 +1,120 @@
 # MPG Prediction Project
 
-Проект по предсказанию расхода топлива автомобилей на основе их технических характеристик с использованием машинного обучения.
+Machine learning project for predicting car fuel consumption based on technical characteristics.
 
-## Описание
+## Description
 
-Этот проект анализирует датасет Auto MPG и строит модели для предсказания расхода топлива (MPG - Miles Per Gallon) на основе следующих характеристик:
-- Количество цилиндров
-- Объем двигателя (displacement)
-- Мощность (horsepower)
-- Вес автомобиля
-- Ускорение
-- Год выпуска
-- Страна производства
+This project analyzes the Auto MPG dataset and builds models to predict fuel consumption (MPG - Miles Per Gallon) based on the following characteristics:
+- Number of cylinders
+- Engine displacement
+- Horsepower
+- Vehicle weight
+- Acceleration
+- Model year
+- Country of origin
 
-## Структура проекта
+## Project Structure
 
 ```
 mpg_prediction/
-├── src/                          # Исходный код проекта
-│   ├── data_preprocessing.py     # Загрузка и предобработка данных
-│   ├── model_training.py         # Обучение моделей ML
-│   └── model_evaluation.py       # Оценка качества моделей
-├── models/                       # Папка для сохранения обученных моделей
-├── main.py                       # Основной скрипт для запуска проекта
-├── requirements.txt              # Список зависимостей Python
-└── README.md                     # Документация проекта
+├── src/                          # Source code
+│   ├── data_preprocessing.py     # Data loading and preprocessing
+│   ├── model_training.py         # ML model training
+│   └── model_evaluation.py       # Model quality evaluation
+├── models/                       # Folder for saving trained models
+├── main.py                       # Main script to run the project
+├── requirements.txt              # Python dependencies list
+├── regression_mpg_auto.ipynb     # Jupyter notebook with analysis
+└── README.md                     # Project documentation
 ```
 
-## Модели машинного обучения
+## Machine Learning Models
 
-Проект включает следующие модели:
-1. **Линейная регрессия** - базовая модель для сравнения
-2. **Полиномиальная регрессия** - учитывает нелинейные зависимости
-3. **Random Forest** - ансамблевый метод для повышения точности
+The project includes the following models:
+1. **Linear Regression** - baseline model for comparison
+2. **Polynomial Regression** - accounts for non-linear dependencies
+3. **Random Forest** - ensemble method for improved accuracy
 
-## Установка и запуск
+## Installation and Usage
 
-### Требования
+### Requirements
 - Python 3.7+
 - pip
 
-### Шаги установки
+### Setup Steps
 
-1. **Перейдите в папку проекта:**
+1. **Navigate to project directory:**
    ```bash
-   cd "c:\Users\User\OneDrive\Рабочий стол\ML-projects\projects\supervised_learning\regression\mpg_prediction"
+   cd regression/mpg_prediction
    ```
 
-2. **Установите зависимости:**
+2. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Запустите проект:**
+3. **Run the project:**
    ```bash
    python main.py
    ```
 
-## Что делает каждый файл
+## File Descriptions
 
 ### `src/data_preprocessing.py`
-- Загружает данные из CSV файла
-- Обрабатывает пропущенные значения в колонке horsepower
-- Удаляет ненужные колонки (car name)
-- Разделяет данные на обучающую и тестовую выборки
+- Loads data from CSV file
+- Handles missing values in horsepower column
+- Removes unnecessary columns (car name)
+- Splits data into training and test sets
 
 ### `src/model_training.py`
-- Создает и обучает три модели машинного обучения
-- Линейная регрессия для базового сравнения
-- Полиномиальная регрессия (степень 2) для учета нелинейностей
-- Random Forest с 100 деревьями для ансамблевого подхода
+- Creates and trains three machine learning models
+- Linear regression for baseline comparison
+- Polynomial regression (degree 2) for non-linear relationships
+- Random Forest with 100 trees for ensemble approach
+- Saves trained models to disk
 
 ### `src/model_evaluation.py`
-- Оценивает качество моделей на тестовых данных
-- Вычисляет метрики R² (коэффициент детерминации) и RMSE (среднеквадратичная ошибка)
-- Выводит результаты в удобном формате
+- Evaluates model quality on test data
+- Calculates R² (coefficient of determination) and RMSE (root mean square error) metrics
+- Outputs results in readable format
+- Saves evaluation results to JSON file
 
 ### `main.py`
-- Координирует весь процесс машинного обучения
-- Последовательно вызывает загрузку данных, обучение и оценку моделей
-- Определяет лучшую модель по метрике R²
+- Coordinates the entire machine learning process
+- Sequentially calls data loading, model training, and evaluation
+- Identifies the best model based on R² metric
 
-## Ожидаемые результаты
+### `regression_mpg_auto.ipynb`
+- Jupyter notebook with exploratory data analysis
+- Visualization of data patterns and relationships
+- Interactive model development and testing
 
-После запуска вы увидите:
-- Размеры обучающей и тестовой выборок
-- Метрики качества для каждой модели (R² и RMSE)
-- Название лучшей модели
+## Expected Results
 
-Пример вывода:
+After running, you will see:
+- Training and test set sizes
+- Quality metrics for each model (R² and RMSE)
+- Best performing model name
+
+Example output:
 ```
 === MPG PREDICTION PROJECT ===
-Загрузка и предобработка данных...
-Размер обучающей выборки: (318, 7)
-Размер тестовой выборки: (80, 7)
+Loading and preprocessing data...
+Training set size: (318, 7)
+Test set size: (80, 7)
 
-Обучение моделей...
+Training models...
+Models saved in: ./models
 
-Оценка моделей:
+Model evaluation:
 LINEAR:
   R² Score: 0.8123
   RMSE: 3.2456
 
-Лучшая модель: RANDOM_FOREST
+Best model: RANDOM_FOREST
 R² Score: 0.8756
 ```
 
-## Данные
+## Dataset
 
-Проект использует датасет Auto MPG из UCI Machine Learning Repository, который содержит информацию о расходе топлива различных автомобилей 1970-1980х годов.
+The project uses the Auto MPG dataset from UCI Machine Learning Repository, containing information about fuel consumption of various cars from the 1970s-1980s.
